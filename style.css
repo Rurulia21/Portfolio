@@ -1,0 +1,382 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "IBM Plex Sans JP", sans-serif;
+}
+
+header {
+  background-color: #b4a19c;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+}
+
+.slider {
+  position: relative;
+  height: 100vh;
+  background-color: #3d3d50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.slide-title {
+  font-size: 60px;
+  color: rgb(80, 237, 214);
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.slide.show .slide-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  background: none;
+  border: none;
+  color: rgb(80, 237, 214);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  background: #000;
+  border-radius: 2px;
+}
+
+/* ナビ非表示 */
+.nav-menu {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  background: white;
+  width: 100%;
+  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+}
+
+/* 開いたとき */
+.nav-menu.active {
+  display: flex;
+}
+
+.prev {
+  left: 20px;
+}
+.next {
+  right: 20px;
+}
+
+/* ABOUTページ */
+.about-main, .contact-main {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.about-main p {
+  text-align: left;
+}
+
+.about-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  gap: 50px;
+}
+
+.introduction {
+  flex: 1;
+  min-width: 250px;
+  font-size: 20px;
+}
+
+.profile-image {
+  flex: 1;
+  min-width: 200px;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* WORKSページ */
+.works-main h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2em;
+  padding: 60px 20px;
+}
+
+.works-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.works-gallery img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #000;
+  object-fit: cover;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 可変正方形 */
+  gap: 20px;
+}
+
+.work-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  overflow: hidden;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.work-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  cursor: zoom-out;
+}
+
+/* CONTACTページ */
+.contact-content {
+  margin-top: 40px;
+  font-size: 20px;
+  border: 1px solid #000;
+  padding: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.contact-content img {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/*レスポンシブデザイン*/
+/*共通*/
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans JP", sans-serif;
+}
+
+main {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+.container {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+/*スマートフォン用*/
+@media all and (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .slider {
+    height: 300px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+/*タブレット用*/
+@media all and (min-width: 769px) and (max-width: 1024px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .slider {
+    height: 400px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+/*コンピュータ用*/
+@media all and (min-width: 1025px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sec01 {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .sec02 {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  .sec03 {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  .container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .slider {
+    height: 500px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+}
+
+/* コンピュータ表示 */
+@media (min-width: 1025px) {
+  .menu-btn {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    background: none;
+    height: auto;
+    width: auto;
+    gap: 40px;
+  }
+}
