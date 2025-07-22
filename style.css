@@ -10,7 +10,7 @@ body {
 
 header {
   width: 100%;
-  height: 80px; /* 必要に応じて固定 */
+  height: 80px;
   background-color: #b4a19c;
 }
 /* ロゴ */
@@ -47,7 +47,7 @@ html.index-page {
 }
 
 .index-page main {
-  display: block; /* スライダーはグリッドで囲まない */
+  display: block;
   padding: 0;
 }
 
@@ -301,7 +301,7 @@ main {
   padding: 20px;
 }
 
-/* スマホ用メニュー */
+/* スマホ用 */
 @media (max-width: 768px) {
   .menu-btn {
     display: flex;
